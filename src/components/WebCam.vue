@@ -1,29 +1,27 @@
 <template>
-  <div>
-    Browser Based Webcam Demo<br /><br />
-    <button id="select-files-button" class="btnWebcam">
-      Capture Webcam Image
-    </button>
-    <!-- <div id="select-files-button-container" class="DashboardContainer"></div> -->
-  </div>
+  <v-container>
+    <v-row align="center" justify="space-around" class="mt-10">
+      <v-btn id="select-files-button" class="btnWebcam" color="#FF6600">
+        Capture Webcam Image
+        <v-icon right dark>
+          mdi-camera
+        </v-icon>
+      </v-btn>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
 import Uppy from "@uppy/core";
 import Dashboard from "@uppy/dashboard";
 import Webcam from "@uppy/webcam";
+// import XHRUpload from "@uppy/xhr-upload";
 
 export default {
   name: "WebCam",
   data: () => ({
-    uppy: null
+    uppy: null,
   }),
-
-  methods: {
-    toggleSideBar() {
-      console.log("toggleSideBar clicked");
-    }
-  },
 
   mounted() {
     this.uppy = new Uppy({ autoProceed: false })
@@ -34,9 +32,10 @@ export default {
         // replaceTargetContent: true,
         // showSelectedFiles: false,
         maxHeight: 500,
-        note: "Web cam images only.",
+        note: "Select camera to test web cam.",
         plugins: ["Webcam"],
-        proudlyDisplayPoweredByUppy: false
+        proudlyDisplayPoweredByUppy: false,
+        hideUploadButton: true,
       })
       .use(Webcam, {
         target: Dashboard,
@@ -46,13 +45,13 @@ export default {
         showVideoSourceDropdown: true,
         videoConstraints: {
           width: { min: 720, ideal: 1280, max: 1920 },
-          height: { min: 480, ideal: 800, max: 1080 }
-        }
+          height: { min: 480, ideal: 800, max: 1080 },
+        },
       });
-
-    console.log("Webcam Created.");
-    // console.log(this.uppy);
-  }
+    // .use(XHRUpload, {
+    //   endpoint: "http://localhost:7071/api/file-upload",
+    // });
+  },
 };
 </script>
 
