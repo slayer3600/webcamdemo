@@ -13,8 +13,7 @@
       </div>
 
       <v-spacer></v-spacer>
-        <span class="mr-2">Browser Based Webcam Demo (VueJS)</span>
-
+      <span class="mr-2">Browser Based Webcam Demo (VueJS)</span>
     </v-app-bar>
 
     <v-main>

@@ -20,7 +20,7 @@ import Webcam from "@uppy/webcam";
 export default {
   name: "WebCam",
   data: () => ({
-    uppy: null,
+    uppy: null
   }),
 
   mounted() {
@@ -35,7 +35,7 @@ export default {
         note: "Select camera to test web cam.",
         plugins: ["Webcam"],
         proudlyDisplayPoweredByUppy: false,
-        hideUploadButton: true,
+        hideUploadButton: true
       })
       .use(Webcam, {
         target: Dashboard,
@@ -45,13 +45,13 @@ export default {
         showVideoSourceDropdown: true,
         videoConstraints: {
           width: { min: 720, ideal: 1280, max: 1920 },
-          height: { min: 480, ideal: 800, max: 1080 },
-        },
+          height: { min: 480, ideal: 800, max: 1080 }
+        }
       });
     // .use(XHRUpload, {
     //   endpoint: "http://localhost:7071/api/file-upload",
     // });
-  },
+  }
 };
 </script>
 
